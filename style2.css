@@ -1,0 +1,541 @@
+*{
+    margin:0;
+    padding: 0;
+
+   
+}
+/* For Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* For Edge and Firefox */
+  body{
+    background-color: var(--pastelgreen);
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+:root {
+    --green1: #37514d;
+    --green2: #518a82;
+    --grey:   #D9D9D9;
+
+    /*new cols*/
+    --pastelgreen: #d6eadf;
+    --green: #b8e0d2;
+    --blue: #95b8d1;
+    --indigo: #809bce;
+    --pink: #eac4d5;
+    --dblue: #041a43;
+
+  }
+
+.headerbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #041a43;
+    color: white;
+    
+    padding: 0;
+    margin: 0;
+
+}
+
+/* logo and flag */
+.headerbar img {
+    margin-right: 0px;
+    margin: 0px ;
+    padding-bottom: 0;
+    
+   
+}
+
+/* team info */
+.headerbar h3,
+.headerbar h1 {
+    text-align: center;
+    margin: 5px 0;
+}
+
+.headerbar h3 {
+    margin-top: 5px;
+}
+
+
+.mission-time-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.mission-time-cont>div,
+.packet-count>div  {
+    background-color: var(--green);
+    color: black;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    
+}
+
+/*play puase*/
+.header-buttons button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--blue);
+    margin-left: 35px;
+    margin-right: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover{
+    background-color: #d6eadf;
+}
+.play::before {
+    content: "\25B6"; 
+    
+}
+
+.pause::before {
+    content: "\II"; 
+}
+
+.refresh::before {
+    content: "\21BB"; 
+}
+
+
+
+
+.telemetry1 {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    width: 100%;
+    padding: 5px 0;
+    
+    overflow: hidden;
+    margin: 0 0; 
+}
+
+.telemetry1 > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+   
+    margin: 0 5px;
+    box-sizing: border-box; 
+}
+.outer {
+    border-radius: 8px;
+    background-color: var(--blue);
+    color: black;
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: medium; 
+    width: 150px; 
+    height: 50px; 
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+
+.inner {
+    align-items:end;
+    border-radius: 6px;
+    background-color: var(--green);
+    border: 3px solid var(--blue);
+    margin-left: 0px;
+    margin-right: 0px;
+    color: black;
+    padding: 5px 0px;
+    margin-top: 5px;
+    width: 140px; 
+}
+.outer:hover{
+    background-color: var(--indigo);
+
+}
+
+
+
+
+/*simulation mode*/
+.sim-gps {
+    display:flex;
+    align-items:flex-start;
+}
+.co-ord-sim{
+    display: inline;
+}
+.packet-count{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #041a43;
+    padding: 10px;
+    border-radius: 8px;
+    
+    margin-left: 15px;
+    margin-bottom: 10px;
+    width: 400px;
+    box-sizing: border-box;
+    color: white;
+    
+}
+.packet-count >div{
+    width: 70px;
+    background-color: var(--blue);
+}
+/*buttons*/
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--indigo);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-left: 15px;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+.button-container button {
+    padding: 8px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    background-color: var(--green);
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: var(--blue);
+}
+.airspeed-gauge{
+    width:400px;
+    height: 100px;
+    background-color: var(--green);
+    margin-top: 10px;
+    margin-left: 15px;
+    
+    border-radius: 20px;  
+}
+
+/*software states*/
+.sim-nav-air {
+    display: flex;
+    align-items:flex-start;
+   flex-direction: column;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+.sim-pres-tilt{
+    display: flex;
+    align-items: flex-start;
+   flex-direction: row;
+    margin-top: 20px;
+   justify-content: space-around;
+}
+.simulation-mode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px; 
+    height: 100px; 
+    background-color: var(--blue);
+    border-radius: 10px;
+    padding: 5px;
+    
+    position: relative;
+    color: black;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-left: 15px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-right: 5px; 
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--indigo);
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--grey);
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--dblue);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.commands {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.command , #simulationDropdown{
+    width: 200px;
+    height: 30px;
+    background-color: var(--blue);
+    border-radius: 5px;
+    border: 2px solid black;
+    margin-top: 5px;
+    margin-right: 10px;
+    
+}
+.graph1, .graph2{
+    width:500px;
+    height: 300px;
+   
+    margin-top: 0px;
+    
+    border-radius: 20px;
+}
+.telemetry-vals{
+    margin-top: 10px;
+    margin-left: 6px;
+    margin-right: 6px;
+
+    border-radius:10px ;
+    border: solid 4px var(--indigo);
+}
+
+/* GPS VALUES */
+
+
+
+
+.gps-values {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    
+    overflow: hidden;
+    margin: 0 auto; 
+}
+
+.gps-values > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    max-width: 100%;
+    margin: 0 5px;
+    box-sizing: border-box; 
+}
+
+.gpsTime,
+.gpsAltitude,
+.gpsLongitude,
+.gpsLatitude,
+.gpsSats {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    margin-bottom: 10px; 
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+.gps-values>.outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 3px;
+    border-radius: 6px; 
+    background-color: #f0f0f0;
+    margin-right: 15px; 
+    width: 150px;
+}
+
+.gps-values>.inner {
+    width: 40px; 
+    height: 15px; 
+    margin-top: 3px; 
+    background-color: #e0e0e0;
+}
+
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 0px;
+    padding: 0px 0;
+    height: 100px;
+}
+
+.footer > div {
+    margin: 0 0px;
+    height: 0px;
+    width: 240px;
+    display: flex;
+    align-items: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.footer-outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    background-color: var(--blue);
+    padding: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;
+    color: black;
+    height: 20px;
+    width: 250px;
+    margin-left: 0px;
+}
+
+.arrow {
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+    font-weight:900;
+    
+    
+}
+
+
+.map-class{
+    text-align: center;
+    background-color: #809bce;
+
+}
+#map {
+    height: 400px;
+    width: 300px;
+
+}
+.graph2-gps{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+   flex-direction: row;
+    margin-top: 20px;
+    margin-left: 0px; 
+}
+.table-container {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: var(--indigo);
+   
+}
+table {
+   width: 100%;
+
+    table-layout: fixed;
+    background-color: var(--blue);
+ 
+}
+thead{
+    background-color: var(--indigo);
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+    background-color: var(--indigo);
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: var(--blue);
+    font-size: small;
+}
+#csvButton:clicked + #allgraphs {
+    display: none;
+
+}
+.imp-tel{
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+.packet-count{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #041a43;
+    padding: 10px;
+    border-radius: 8px;
+    
+    margin-left: 15px;
+    margin-bottom: 10px;
+    width: 400px;
+    box-sizing: border-box;
+    color: white;
+    
+}
+.packet-count >div{
+    width: 100%;
+    background-color: var(--dblue);
+}

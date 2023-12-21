@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+ 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis-graph3d.min.js" integrity="sha512-gThGOE09HjAkB+g+q0kZKlbC+nWfB03W8X+yed4KWw/zx+17Z+P5Jz1vz+DgfBstS0IJ/s3C+DFy8vuq+1acCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!--leaflet-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<!--plotly.js-->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+  
+    <title>Arya GUI</title>
+ 
+</head>
+<body>
+<header class="headerbar">
+    
+   <img src="images/arya_logo.png" alt="logo" height="120"> 
+
+   <div class="mission-time-cont" >Packet Count <div  name="packets" id="PacketCountValue" cols="9" rows="1"></div> </div>
+  
+  
+   <div class="team-info">
+    <h1>DJS ARYA</h1>
+    <h3>Team ID 2005</h3>
+</div>
+  
+  
+   
+   <div class="mission-time-cont" >Mission Time <div name="missiontime" id="MissionTimeValue" cols="10" rows="1"></div> </div>
+  
+   <img src="images/india_flag.jpg" alt="flag" height="90">
+</header>
+
+
+
+    
+<!--PRESSURE TEMP AIR SPEED VOLTAGE ALTITUDE-->
+<div class="telemetry-vals">
+<div class="telemetry1">
+    <div class="pressure">
+        <div class="outer">
+           <strong>PRESSURE</strong> 
+            <div class="inner" id="PressureValue"></div>
+        </div>
+    </div>
+    <div class="temperature">
+        <div class="outer">
+            <strong>TEMPERATURE</strong> 
+            <div class="inner" id="TemperatureValue">val</div>
+        </div>
+    </div>
+    <div class="airspeed">
+        <div class="outer">
+            AIR SPEED
+            <div class="inner" id="AirSpeedValue">val</div>
+        </div>
+    </div>
+    <div class="voltage">
+        <div class="outer">
+            VOLTAGE
+            <div class="inner" id="VoltageValue">val</div>
+        </div>
+    </div>
+    <div class="Altitude">
+        <div class="outer">
+            ALTITUDE
+            <div class="inner" id="AltitudeValue">val</div>
+        </div>
+    </div>
+    
+        <div class="tilt-x">
+            <div class="outer">
+                TILT X
+                <div class="inner" id="TiltXValue">val</div>
+            </div>
+        </div>
+        <div class="tilt-y">
+            <div class="outer">
+                TILT Y
+                <div class="inner" id="TiltYValue">val</div>
+            </div>
+        </div>
+        <div class="rot-z">
+            <div class="outer">
+                ROT Z
+                <div class="inner" id="RotZValue">val</div>
+            </div>
+        </div>
+        <div class="mode">
+            <div class="outer">
+                MODE
+                <div class="inner" id="ModeValue">value</div>
+            </div></div>
+
+   </div>
+   <div class="gps-values">
+    <div class="gpsTime">
+        <div class="outer">
+           GPS TIME
+            <div class="inner" id="GPSTimeValue">value</div>
+        </div>
+    </div>
+    <div class="gpsAltitude">
+        <div class="outer">
+            GPS ALTITUDE
+            <div class="inner" id="GPSAltitudeValue">value</div>
+        </div></div>
+        <div class="gpsLongitude">
+            <div class="outer">
+               GPS LONGITUDE
+                <div class="inner" id="GPSLongiValue">value</div>
+            </div></div>
+            <div class="gpsLatitude">
+                <div class="outer">
+                    GPS LATITUDE
+                    <div class="inner" id="GPSLatiValue">value</div>
+                </div></div>
+                <div class="gpsSats">
+                    <div class="outer">
+                        GPS SATS
+                        <div class="inner" id="GPSSatsValue">value</div>
+                    </div>
+
+                </div>
+             
+                    <div class="gpsTime">
+                        <div class="outer">
+                            HS DEPLOYED
+                            <div class="inner" id="HSValue">value</div>
+                        </div>
+                    </div>
+                    <div class="gpsAltitude">
+                        <div class="outer">
+                            PC DEPLOYED
+                            <div class="inner" id="PCValue">value</div>
+                        </div></div>
+                        
+                            <div class="gpsLatitude">
+                                <div class="outer">
+                                    STATE
+                                    <div class="inner" id="StateValue">value</div>
+                                </div></div>
+                                <div class="gpsSats">
+                                    
+                                    <div class="outer">
+                                        CMD ECHO
+                                        <div class="inner" id="EchoValue">value</div>
+                                    </div>
+                
+                                </div></div></div>
+                                     <!--SOFTWARE STATES-->
+            <footer class="footer">
+                <div class="LAUNCH">
+                    <div class="footer-outer" id="L">
+                       LAUNCH
+                    </div>
+                    <div class="arrow">&#8594;</div>
+                </div>
+               
+                <div class="ascent">
+                    <div class="footer-outer" id="A" >
+                        ASCENT
+                    </div>
+                    <div class="arrow">&#8594;</div>
+                </div>
+                
+                <div class="rocketSeperation">
+                    <div class="footer-outer" id="R">
+                        ROCKET SEPERATION
+                    </div>
+                    <div class="arrow">&#8594;</div>
+                </div>
+                
+                <div class="descent">
+                    <div class="footer-outer" id="D">
+                        DESCENT
+                    </div>
+                    <div class="arrow">&#8594;</div>
+                </div>
+                
+                <div class="hsReleased">
+                    <div class="footer-outer" id="H">
+                        HS RELEASED
+                    </div>
+                    <div class="arrow">&#8594;</div>
+                </div>
+                
+                <div class="landed">
+                    <div class="footer-outer" id="LG">
+                        LANDED
+                    </div>
+                </div>
+            </footer>
+            
+   <!-- SIMULATION MODE -->
+<div class="sim-pres-tilt">
+    <div class="sim-nav-air">
+       <div class="packet-count"><div class="header-buttons">
+        <button class="play" id="playbutton"></button>
+        <button class="pause"> </button>
+        <button class="refresh"></button>
+        
+       </div></div>
+        <div class="simulation-mode">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+            <span style="margin-left: 5px;">SIMULATION MODE</span>
+            
+               
+                        
+                        <select id="simulationDropdown" >
+                            <option value="COM" selected><h4 > COM</h4></option>
+                            <option value="SIMP">SIMP</option>
+                            <option value="CAL">CAL</option>
+                            <option value="CX">CX</option>
+                            <option value="ST">ST</option>
+                            <option value="SIM">SIM</option>
+                            <option value="BCN">BCN</option>
+                        </select>
+                    
+            
+        </div>
+        <!--CO ORDINATES CSV GRAPHS OPTION-->
+        <div class="button-container">
+            <button class="csvbutton" id="csvButton" onclick="hideElements()" >CSV</button>
+            <button class="3dgraphbutton" id="3dButton" onclick="hideElements3()">3D GRAPH</button>
+            <button class="coorbutton" id="cooButton" onclick="hideElements4()" >MAP</button>
+            <button class="graphbutton" id="graphButton" onclick="hideElements2()">GRAPHS</button>
+        </div>
+<!--AIR SPEED GAUGE-->
+<div class="airspeed-gauge" >
+    <h3 style="text-align: center; text-decoration: solid; background-color: #d6eadf;">AIR SPEED</h3>
+     <div id="airSpeedGraph"  ></div>
+ </div>
+
+
+    </div>
+
+   
+<!--GPS VALUES-->
+
+
+<!--GRAPH 1-->
+<div class="map-class" ><h3>CO-ORDINATES</h3><div id="map" style="width: 970px; height: 300px;"></div></div>
+
+
+
+
+
+            </div>
+            <div id="allgraphs">
+            <div class ="graph2-gps" style=" margin-left: 5px; margin-right: 5px;">   
+            <div class="graph1" style="background-color: #809bce; border-radius: 20px; border:solid 2px #b8e0d2; height: 330px;">
+                <h3 style="text-align: center; color: white;">PRESSURE</h3>
+                <div id="pressureGraph" style="width: 450; height: 300px;"></div>
+                      
+            </div>
+            <div class="graph1" style="background-color: #809bce; border-radius: 20px; border:solid 2px #b8e0d2; height: 330px; ">
+                <h3 style="text-align: center; color: white;">TEMPERATURE</h3>
+                <div id="temperatureGraph" style="width:450; height:300px; "></div>
+                 
+            </div>
+            <div class="graph1" style="background-color: #809bce; border-radius: 20px; border:solid 2px #b8e0d2; height: 330px; ">
+                <h3 style="text-align: center; color: white;">ALTITUDE</h3>
+                 <div id="altitudeGraph" style="width: 450; height: 300px;"></div></div>        
+        </div>
+
+         
+            <div class ="graph2-gps">                                    
+         
+            <!--GRAPH 1-->
+            
+            
+                 
+
+
+            
+
+                        </div>
+                        <div class="graph2-gps" style="margin-bottom: 20px; margin-left: 5px; margin-right: 5px;">
+                           
+                                 <div class="graph1" style="background-color: #809bce; border-radius: 20px; border:solid 2px #b8e0d2; height: 330px;">
+                                    <h3 style="text-align: center; color: white;">TILT X TILT Y</h3>
+                                     <div id="tiltGraph" style="width: 450px; height: 300px;"></div></div>
+
+                                 <div class="graph1" style="background-color: #809bce; border-radius: 20px; border:solid 2px #b8e0d2; height: 330px;">
+                                    <h3 style="text-align: center; color: white;">VOLTAGE</h3>
+                                     <div id="voltageGraph" style="width: 450px; height: 300px;"></div></div>
+                                     <div class="graph1" style="background-color: #809bce; border-radius: 20px; border:solid 2px #b8e0d2; height: 330px;">
+                                        <h3 style="text-align: center; color: white;">AIR SPEED</h3>
+                                         <div id="airspeedLineGraph" style="width: 450px; height: 300px;"></div></div>
+                                     
+                        </div>
+                      
+                    </div>
+                    <div class="graph1" style=" width: 100%; height: 400px; margin-top: 20px; margin-bottom: 30px;" id="3dgraoh">
+                        <h3 style=" text-align: center;">Latitude Longitude Altitude</h3>
+                       
+                         <div id="visualization" style="width: 100%; height: 400px;"></div>
+                      
+                         
+                         </div>
+<!--CSV-->
+
+                       
+           
+         
+       
+
+          
+            
+            <table class="table-container" id="csvdata">
+                <thead>
+                    <tr>
+                        <th>TEAM_ID</th>
+                        <th>MISSION_TIME</th>
+                        <th>PACKET_COUNT</th>
+                        <th>MODE</th>
+                        <th>STATE</th>
+                        <th>ALTITUDE</th>
+                        <th>AIR_SPEED</th>
+                        <th>HS_DEPLOYED</th>
+                        <th>PC_DEPLOYED</th>
+                        <th>TEMPERATURE</th>
+                        <th>VOLTAGE</th>
+                        <th>PRESSURE</th>
+                        <th>GPS_TIME</th>
+                        <th>GPS_ALTITUDE</th>
+                        <th>GPS_LATITUDE</th>
+                        <th>GPS_LONGITUDE</th>
+                        <th>GPS_SATS</th>
+                        <th>TILT_X</th>
+                        <th>TILT_Y</th>
+                        <th>ROT_Z</th>
+                        <th>CXON</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2033</td>
+                        <td>00:00:00</td>
+                        <td>1</td>
+                        <td>F</td>
+                        <td>ASCENT</td>
+                        <td>54.72</td>
+                        <td>89.31</td>
+                        <td>N</td>
+                        <td>C</td>
+                        <td>27.2</td>
+                        <td>5</td>
+                        <td>1013.25</td>
+                        <td>00:00:00</td>
+                        <td>68.29</td>
+                        <td>22.6897</td>
+                        <td>89.6919</td>
+                        <td>8</td>
+                        <td>97.6</td>
+                        <td>-14.8</td>
+                        <td>48.9</td>
+                        <td>CXON</td>
+                    </tr>
+                    <tr>
+                        <td>2033</td>
+                        <td>00:00:00</td>
+                        <td>1</td>
+                        <td>F</td>
+                        <td>ASCENT</td>
+                        <td>54.72</td>
+                        <td>89.31</td>
+                        <td>N</td>
+                        <td>C</td>
+                        <td>27.2</td>
+                        <td>5</td>
+                        <td>1013.25</td>
+                        <td>00:00:00</td>
+                        <td>68.29</td>
+                        <td>22.6897</td>
+                        <td>89.6919</td>
+                        <td>8</td>
+                        <td>97.6</td>
+                        <td>-14.8</td>
+                        <td>48.9</td>
+                        <td>GPS_TIME</td>
+                    </tr>
+                    <tr>
+                        <td>2033</td>
+                        <td>00:00:00</td>
+                        <td>1</td>
+                        <td>F</td>
+                        <td>ASCENT</td>
+                        <td>54.72</td>
+                        <td>89.31</td>
+                        <td>N</td>
+                        <td>C</td>
+                        <td>27.2</td>
+                        <td>5</td>
+                        <td>1013.25</td>
+                        <td>00:00:00</td>
+                        <td>68.29</td>
+                        <td>22.6897</td>
+                        <td>89.6919</td>
+                        <td>8</td>
+                        <td>97.6</td>
+                        <td>-14.8</td>
+                        <td>48.9</td>
+                        <td>GPS_TIME</td>
+                    </tr>
+                    <tr>
+                        <td>2033</td>
+                        <td>00:00:00</td>
+                        <td>1</td>
+                        <td>F</td>
+                        <td>ASCENT</td>
+                        <td>54.72</td>
+                        <td>89.31</td>
+                        <td>N</td>
+                        <td>C</td>
+                        <td>27.2</td>
+                        <td>5</td>
+                        <td>1013.25</td>
+                        <td>00:00:00</td>
+                        <td>68.29</td>
+                        <td>22.6897</td>
+                        <td>89.6919</td>
+                        <td>8</td>
+                        <td>97.6</td>
+                        <td>-14.8</td>
+                        <td>48.9</td>
+                        <td>GPS_TIME</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+
+
+                             
+<script src="script.js"></script>
+
+   <script type="text/javascript" src="visualization.js"></script>
+
+
+            
+</body>
+
+</html>
